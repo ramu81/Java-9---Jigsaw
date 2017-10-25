@@ -42,3 +42,17 @@ javac -d mods\com.world src\com.world\module-info.java src\com.world\com\chinna\
 javac --module-path mods -d mods\edu.kondapalli src\edu.kondapalli\module-info.java src\edu.kondapalli\edu\greetings\Greetings.java
 
 java --module-path mods -m edu.kondapalli/edu.greetings.Greetings
+
+Packaging
+=========
+
+jar --create --file=mlib/com.world@1.0.jar --module-version=1.0 -C mods/com.world .
+
+jar --create --file=mlib/edu.kondapalli.jar --main-class=edu.greetings.Greetings -C mods/edu.kondapalli .
+
+java -p mlib -m edu.kondapalli
+
+jar --describe-module --file=mlib/com.world@1.0.jar
+
+jar --describe-module --file=mlib/edu.kondapalli.jar
+
